@@ -1,0 +1,58 @@
+<% render_main_sidebar_menu %>
+
+<div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="info-box">
+    <span class="info-box-icon bg-green"><%= fa_icon :phone %></i></span>
+
+    <div class="info-box-content">
+      <span class="info-box-text">Calls completed</span>
+      <span class="info-box-number"><%= @completed_calls_count %></span>
+    </div>
+    <!-- /.info-box-content -->
+  </div>
+  <!-- /.info-box -->
+</div>
+
+<div class="col-md-12">
+  <div class="box">
+    <div class="box-header">
+      <h3 class="box-title">Calls</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body no-padding">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Duration</th>
+          <th>State</th>
+          <th>Created at</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @calls.each do |call| %>
+            <tr>
+              <%= tag.td call.call_id %>
+              <%= tag.td call.from %>
+              <%= tag.td call.to %>
+              <%= tag.td call.duration %>
+              <%= tag.td call_state_tag(call) %>
+              <%= tag.td call.created_at.strftime('%a, %d %b %Y %H:%M:%S') %>
+              <td>
+                <%= link_to 'Message', call.call_parameters['RecordingUrl'], target: '_blank', class: %w(btn btn-xs btn-info) if call.call_parameters['RecordingUrl'] %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer">
+      <%= paginate @calls %>
+    </div>
+    <!-- /.box-footer -->
+  </div>
+</div>
