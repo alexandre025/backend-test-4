@@ -12,9 +12,21 @@
 
 ActiveRecord::Schema.define(version: 20170719183956) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "hstore"
+
   create_table "calls", force: :cascade do |t|
+    t.string "call_id", null: false
+    t.string "state", null: false
+    t.string "from", null: false
+    t.string "to", null: false
+    t.datetime "completed_at"
+    t.hstore "call_parameters"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["call_id"], name: "index_calls_on_call_id"
+    t.index ["state"], name: "index_calls_on_state"
   end
 
 end
