@@ -38,7 +38,7 @@
               <%= tag.td call.call_id %>
               <%= tag.td call.from %>
               <%= tag.td call.to %>
-              <%= tag.td call.duration %>
+              <%= tag.td "#{call.duration}s" %>
               <%= tag.td call_state_tag(call) %>
               <%= tag.td call.created_at.strftime('%a, %d %b %Y %H:%M:%S') %>
               <td>
