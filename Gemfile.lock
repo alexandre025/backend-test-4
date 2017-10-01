@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/alexandre025/cdx.git
-  revision: fefb7484385451d9e17de71cc25869341083aa32
+  revision: 9d2fc13abaa19f71e8f536af1cabf749be0349d9
   specs:
     cdx (0.0.1)
       ajax-datatables-rails (~> 0.4.0)
