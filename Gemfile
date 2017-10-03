@@ -55,6 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'twilio-ruby'
 
-gem 'cdx', github: 'alexandre025/cdx'
+gem 'cdx', '0.0.3'
 
 ruby '2.4.0'
