@@ -3,6 +3,8 @@ class CallsController < ApplicationController
 
   before_action :create_or_update_call
 
+  # POST /calls/handle
+  # Incoming calls are handled by this method
   def handle
     response = Twilio::TwiML::VoiceResponse.new do |r|
       r.say t('calls.messages.handle')
@@ -12,6 +14,8 @@ class CallsController < ApplicationController
     render xml: response
   end
 
+  # POST /calls/action
+  # Execute to the proper action, selected by a digits
   def action
     response = \
       case params['Digits']
@@ -35,6 +39,8 @@ class CallsController < ApplicationController
     render xml: response
   end
 
+  # POST /calls/complete
+  # Mark with a timestamp a completed call
   def complete
     @call.update(completed_at: DateTime.now)
   end
@@ -42,6 +48,7 @@ class CallsController < ApplicationController
 
   private
 
+  # Create or update a call from request parameters
   def create_or_update_call
     @call = Call.create_or_update_from_params(params)
   end

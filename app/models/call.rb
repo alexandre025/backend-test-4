@@ -1,8 +1,14 @@
 class Call < ApplicationRecord
 
+  # Validators
+
   validates :state, :from, :to, :call_parameters, presence: true
 
+  # Scopes
+
   scope :with_state, -> (state) { where(state: state) }
+
+  # Methods
 
   def duration
     completed_at ? (completed_at - created_at).round(2) : ''
